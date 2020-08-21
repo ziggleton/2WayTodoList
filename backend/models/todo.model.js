@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const todoSchema = new Schema({
-    titke: {type: String, required: true},
+    title: {type: String, required: true},
     complete: {type: Boolean, required: true},
     due_on: {type: Date, required: true}
 },{
