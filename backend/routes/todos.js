@@ -34,20 +34,16 @@ router.route('/:id').get((req,res) => {
 
 router.route('/:id').delete((req,res) => {
     Todo.findByIdAndDelete(req.params.id)
-        .then(() => res.json('Execrcise deleted'))
+        .then(() => res.json('todo deleted'))
         .catch(error => req.status(400).json(`Error: ${error}`))
 });
 
 router.route('/update/:id').post((req,res) => {
-    Todo.findById(req.params.id)
-        .then(todo => {
-            todo.title = req.body.title || todo.title;
-            todo.complete = Number(req.body.complete) || Number(todo.complete);
 
-            todo.save()
-                .then(() => res.json('todo updated!'))
-                .catch(error => res.status(400).json(`Error: ${error}`));
-            })
+    const filter = {_id: req.params.id};
+    const update = {title: req.body.title, complete: req.body.complete};
+    Todo.findOneAndUpdate(filter, update, {new: true})
+        .then(() => res.json('todo updated'))
         .catch(error => res.status(400).json(`Error: ${error}`));
 });
 

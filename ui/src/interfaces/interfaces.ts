@@ -1,5 +1,8 @@
 export interface TodoItemProps {
-    todo?: Todo
+    todo: Todo,
+    completeSwitch: completeSwitch,
+    editTodo: editTodo,
+    removeTodo: removeTodo
 }
 
 export interface TodoListProps {

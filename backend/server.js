@@ -19,8 +19,8 @@ mongoose
     .catch((err) => console.error(`There was an error: ${err}`));
 
 
-// const connection = mongoose.connection;
-// connection.once('open', () => console.log('Database connected successfully'));
+const connection = mongoose.connection;
+connection.once('open', () => console.log('Database open successfully'));
 
 
 const todosRouter = require('./routes/todos');
