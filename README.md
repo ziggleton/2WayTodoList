@@ -1,7 +1,7 @@
 # 2WayTodoList
 Full stack todo list 
 
-# istructions  on how to run the app
+# instructions  on how to run the app
 
 - clone the master repo
 - ensure that you have docker installed on you machine
