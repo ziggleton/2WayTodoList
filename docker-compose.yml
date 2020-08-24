@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  backend:
+    container_name: API
+    restart: always
+    build: ./backend
+    ports:
+      - '4000:4000'
+    env_file: ./backend/.env
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app_network
+    depends_on:
+      - db
+
+  frontend:
+    container_name: react_app
+    restart: unless-stopped
+    build: ./ui
+    environment:
+      - NODE_PATH=/app/src
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+  db:
+    container_name: mongodb
+    image: mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: 2waytodo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/mdb
+      - mongo_config:/data/mdbconfig
+    networks:
+      - app_network
+
+networks:
+  app_network:
+
+volumes:
+  mongo_data: {}
+  mongo_config: {}

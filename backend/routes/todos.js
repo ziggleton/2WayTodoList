@@ -11,16 +11,13 @@ router.route('/').get((req,res) => {
 
 router.route('/add').post((req,res) => {
     
-    const {title, complete, due_on} = req.body
-    // const title = req.body.description;
-    // const complete = Number(req.body.duration);
-    // const due_on = Date.parse(req.body.date);
+    const title = req.body.title;
+    const complete = req.body.complete;
 
     const newtodo = new Todo(
         {
             title,
-            complete,
-            due_on
+            complete
         }
     );
 
@@ -46,7 +43,6 @@ router.route('/update/:id').post((req,res) => {
         .then(todo => {
             todo.title = req.body.title || todo.title;
             todo.complete = Number(req.body.complete) || Number(todo.complete);
-            todo.due_on = Date.parse(req.body.due_on) || Date.parse(todo.due_on);
 
             todo.save()
                 .then(() => res.json('todo updated!'))
