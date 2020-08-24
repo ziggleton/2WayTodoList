@@ -3,6 +3,8 @@ import { TodoItem } from '../TodoItem/TodoItem';
 import { TodoForm } from '../todoForm/TodoForm';
 import React, { useState, useEffect } from 'react';
 
+import './todoList.scss';
+
 export const TodoList: React.FC = () => {
     
     const baseUrl: string = 'http://0.0.0.0:4000';

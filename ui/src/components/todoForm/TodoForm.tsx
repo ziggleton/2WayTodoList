@@ -4,11 +4,6 @@ import { TodoFormProps } from '../../interfaces/interfaces'
 export const TodoForm: React.FC<TodoFormProps> = ({createTodo}) => {
 
     const [title, setTitle] = useState<string|undefined>('');
-
-    useEffect(() => {
-        console.log('hello');
-    }, []);
-
     const handleChange = (event: any) => {
         setTitle(event.currentTarget.value);
     }

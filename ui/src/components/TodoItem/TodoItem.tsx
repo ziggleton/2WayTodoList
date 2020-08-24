@@ -1,5 +1,7 @@
-import React, { useEffect, useState, ReactEventHandler } from 'react'
-import { TodoItemProps } from '../../interfaces/interfaces'
+import React, { useEffect, useState, ReactEventHandler } from 'react';
+import { TodoItemProps } from '../../interfaces/interfaces';
+
+import './todoItem.scss';
 
 export const TodoItem: React.FC<TodoItemProps> = ({todo, completeSwitch, editTodo, removeTodo}) => {
 
@@ -40,10 +42,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({todo, completeSwitch, editTod
     }
 
     return (
-        <li className="todo-list-item">
+        <li className={ `todo-list-item ${isEdit ? "editing" : undefined} ${checked ? "complete" : undefined}`}>
             <input type="checkbox" onChange={() => handleCheckedStatus(todo)} checked={checked} />
-            <input type="text" onChange={handleTitleChange} value={title}/>
-            <span className={ 'title ' + isEdit ? 'editting': undefined} ></span>
+            <input type="text" onChange={handleTitleChange} value={title} />
+            <span className="title">{title}</span>
             <div className="actions">
                 <button onClick={handleEdit} data-action="edit">edit</button>
                 <button onClick={handleEdit} data-action="remove">remove</button>
