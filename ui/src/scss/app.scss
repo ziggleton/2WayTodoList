@@ -15,4 +15,12 @@ html, body {
     Roboto, Oxygen-Sans, Ubuntu, Cantarell,
     "Helvetica Neue", sans-serif;
     font-size: 16px;
+
+    #root {
+        height: 100%;
+
+        .App {
+            height: 100%;
+        }
+    }
 }

@@ -5,6 +5,10 @@ export interface TodoItemProps {
     removeTodo: removeTodo
 }
 
+export interface TodoFormProps {
+    createTodo: createTodo
+}
+
 export interface TodoListProps {
     todos?: Array<Todo>
 }

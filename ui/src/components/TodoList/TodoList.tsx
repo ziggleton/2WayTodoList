@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { TodoItem } from '../TodoItem/TodoItem';
+import { TodoForm } from '../todoForm/TodoForm';
 import React, { useState, useEffect } from 'react';
 
 export const TodoList: React.FC = () => {
@@ -26,7 +27,16 @@ export const TodoList: React.FC = () => {
      * Adds todo to the list
      * @param item 
      */
-    const createTodo = (item: Todo) => {};
+    const createTodo = (item: Todo) => {
+        
+        axios.post(`${baseUrl}/todos/add`, item)
+            .then(res => {
+                const updatedTodo: Todo[] = [...todos, item];
+                fetchData(); 
+            })
+            .catch(error => console.log(error));
+
+    };
 
     /**
      * Edits todo item
@@ -81,6 +91,8 @@ export const TodoList: React.FC = () => {
     return (
         
         <div className="todo-list">
+            <TodoForm createTodo={createTodo} />
+            <h3 className="app-header">2 Way todo list</h3>
             <ul>
                 {renderList()}
             </ul>
