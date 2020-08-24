@@ -5,7 +5,10 @@ import './scss/app.scss';
 function App() {
   return (
     <div className="App">
-      <TodoList />
+      <header className="shadow"></header>
+      <main>
+        <TodoList />
+      </main>
     </div>
   );
 }
