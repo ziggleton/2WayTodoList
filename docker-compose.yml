@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     container_name: API
-    restart: unless-stopped
+    restart: always
     build: ./backend
     ports:
       - '4000:4000'
@@ -24,7 +24,7 @@ services:
     ports:
       - '80:80'
     depends_on:
-      - API
+      - backend
     networks:
       - app_network
 

@@ -1,10 +1,7 @@
-export interface Todo {
-    id: string,
-    title: string,
-    completed: boolean,
-    due_on: Date
+export interface TodoItemProps {
+    todo?: Todo
 }
 
-export interface TodoList {
-    todos: Todo[]
+export interface TodoListProps {
+    todos?: Array<Todo>
 }
