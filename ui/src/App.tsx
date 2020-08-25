@@ -7,7 +7,9 @@ function App() {
     <div className="App">
       <header className="shadow"></header>
       <main>
-        <TodoList />
+        <div className="container">
+          <TodoList />
+        </div>
       </main>
     </div>
   );

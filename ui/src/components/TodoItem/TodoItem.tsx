@@ -41,13 +41,19 @@ export const TodoItem: React.FC<TodoItemProps> = ({todo, completeSwitch, editTod
         editTodo(todoItem);
     }
 
+    const handleDoneEdit = (event: any) => {
+        if (!isEdit) return;
+        setIsEdit(!isEdit);
+    }
+
     return (
-        <li className={ `todo-list-item ${isEdit ? "editing" : undefined} ${checked ? "complete" : undefined}`}>
+        <li className={ `todo-list-item ${isEdit ? "editing" : ""} ${checked ? "complete" : ""}`}>
             <input type="checkbox" onChange={() => handleCheckedStatus(todo)} checked={checked} />
             <input type="text" onChange={handleTitleChange} value={title} />
             <span className="title">{title}</span>
             <div className="actions">
-                <button onClick={handleEdit} data-action="edit">edit</button>
+                <button onClick={handleEdit} data-action="edit" className="edit">edit</button>
+                <button onClick={handleDoneEdit} className="close">x</button>
                 <button onClick={handleEdit} data-action="remove">remove</button>
             </div>  
         </li>
